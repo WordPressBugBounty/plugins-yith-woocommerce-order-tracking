@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the YITH WooCommerce Order & Shipment Tracking package.
 msgid ""
 msgstr ""
-"Project-Id-Version: YITH WooCommerce Order & Shipment Tracking 2.30.0\n"
+"Project-Id-Version: YITH WooCommerce Order & Shipment Tracking 2.31.0\n"
 "Report-Msgid-Bugs-To: YITH <plugins@yithemes.com>\n"
-"POT-Creation-Date: 2024-09-24 12:41:58+00:00\n"
+"POT-Creation-Date: 2024-11-07 09:17:46+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,91 +24,110 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: includes/class.yith-woocommerce-order-tracking.php:148
-msgid "General options"
+#: includes/class.yith-woocommerce-order-tracking.php:196
+msgid "Select the carriers that will be used for orders shipping."
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:149
-#: plugin-options/carriers-options.php:16
-msgid "Carriers"
+#: includes/class.yith-woocommerce-order-tracking.php:295
+msgid ""
+"Loyalize your customers with an effective points-based loyalty program and "
+"instant rewards."
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:170
+#: includes/class.yith-woocommerce-order-tracking.php:302
+msgid ""
+"Add an instant search form to your e-commerce shop and help your customers "
+"quickly find the products they want to buy."
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:324
+msgid ""
+"Allows your customers to easily track the shipping of orders placed in "
+"e-commerce. "
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:338
+msgid ""
+"<mark>Enable the carriers</mark>     you want to use for the shipment of "
+"your orders"
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:339
+msgid "and embark on this new adventure!"
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:385
 msgid ""
 "Choose your carriers from a list of <b>480+ carriers</b> supported to "
 "<b>automatically get the tracking URL.</b>"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:171
+#: includes/class.yith-woocommerce-order-tracking.php:386
 msgid ""
 "Enter also the <b>Estimated Delivery Date</b> and <b>share the tracking "
 "info via email</b> with customers when the order is completed."
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:172
+#: includes/class.yith-woocommerce-order-tracking.php:387
 msgid ""
 "Save time by <b>importing multiple tracking info into your orders from a "
 "CSV file.</b>"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:173
+#: includes/class.yith-woocommerce-order-tracking.php:388
 msgid ""
 "Automatically change the order status to \"Completed\" after the tracking "
 "data insertion."
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:174
+#: includes/class.yith-woocommerce-order-tracking.php:389
 msgid ""
 "Use the built-in shortcode to <b>create a custom order tracking page</b> on "
 "your shop."
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:175
+#: includes/class.yith-woocommerce-order-tracking.php:390
 msgid "Regular updates, translations, and premium support."
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:308
-msgid "Order tracking"
-msgstr ""
-
-#: includes/class.yith-woocommerce-order-tracking.php:344
+#: includes/class.yith-woocommerce-order-tracking.php:612
 msgid "Order picked up by Carrier"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:352
+#: includes/class.yith-woocommerce-order-tracking.php:620
 msgid "Pickup date:"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:359
+#: includes/class.yith-woocommerce-order-tracking.php:627
 msgid "Enter pickup date"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:372
+#: includes/class.yith-woocommerce-order-tracking.php:640
 msgid "Tracking code:"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:373
+#: includes/class.yith-woocommerce-order-tracking.php:641
 msgid "Enter tracking code"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:376
+#: includes/class.yith-woocommerce-order-tracking.php:644
 msgid "Carrier name:"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:377
+#: includes/class.yith-woocommerce-order-tracking.php:645
 msgid "Enter carrier name"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:386
+#: includes/class.yith-woocommerce-order-tracking.php:654
 msgid "Carrier website link:"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:387
+#: includes/class.yith-woocommerce-order-tracking.php:655
 msgid "Enter carrier website link"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:441
-#: includes/class.yith-woocommerce-order-tracking.php:612
+#: includes/class.yith-woocommerce-order-tracking.php:704
+#: includes/class.yith-woocommerce-order-tracking.php:869
 #: plugin-options/general-options.php:40
 msgid ""
 "Your order has been picked up by <b>[carrier_name]</b> on "
@@ -116,30 +135,34 @@ msgid ""
 "tracking on [carrier_link]"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:444
+#: includes/class.yith-woocommerce-order-tracking.php:707
 msgid ""
 "Picked up by <b>[carrier_name]</b> on <b>[pickup_date]</b>. Tracking code: "
 "<b>[track_code]</b>. Live tracking on [carrier_link]"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:491
+#: includes/class.yith-woocommerce-order-tracking.php:754
 msgid "Track"
 msgstr ""
 
-#: includes/class.yith-woocommerce-order-tracking.php:612
+#: includes/class.yith-woocommerce-order-tracking.php:869
 msgid "Tracking info"
 msgstr ""
 
-#: init.php:100
+#: init.php:101
 #. translators: %s is the plugin name.
 msgid "%s is enabled but not effective. It requires WooCommerce in order to work."
 msgstr ""
 
-#: init.php:118
+#: init.php:119
 #. translators: %s is the plugin name.
 msgid ""
 "You can't activate the free version of %s while you are using the premium "
 "one."
+msgstr ""
+
+#: plugin-options/carriers-options.php:16
+msgid "Carriers"
 msgstr ""
 
 #: plugin-options/general-options.php:15
@@ -151,7 +174,7 @@ msgid "Default carrier"
 msgstr ""
 
 #: plugin-options/general-options.php:24
-msgid "Enter the carrier to show by default in the Order Details page."
+msgid "Enter the carrier to show by default on the \"Edit order\" page."
 msgstr ""
 
 #: plugin-options/general-options.php:31
@@ -159,23 +182,23 @@ msgid "User options"
 msgstr ""
 
 #: plugin-options/general-options.php:36
-msgid "Text to show in the Order Details page"
+msgid "Text to show on the \"Edit order\" page"
 msgstr ""
 
 #: plugin-options/general-options.php:41
 msgid ""
-"Set the text to show in the Order Details page. Customize the text using "
+"Set the text to show on the \"Edit order\" page. Customize the text using "
 "these placeholders to provide the real shipping information: "
 "<br><b>[carrier_name]</b>, <b>[pickup_date]</b>, <b>[track_code]</b>, "
 "<b>[carrier_link]</b>"
 msgstr ""
 
 #: plugin-options/general-options.php:47
-msgid "Position of the text in the Order Details page"
+msgid "Position of the text on the \"Edit order\" page"
 msgstr ""
 
 #: plugin-options/general-options.php:51
-msgid "Choose the position of the text in the Order Details page."
+msgid "Choose the position of the text on the \"Edit order\" page."
 msgstr ""
 
 #: plugin-options/general-options.php:53
@@ -199,4 +222,84 @@ msgid ""
 "Enter the order shipping and tracking information in your WooCommerce "
 "orders. Share the tracking info with your customers and improve your "
 "customer experience."
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:184
+msgctxt "Settings tab name"
+msgid "Settings"
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:185
+msgctxt "Tab description in plugin settings panel"
+msgid "Configure the general settings of the plugin."
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:195
+msgctxt "Carriers tab name"
+msgid "Carriers"
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:203
+msgctxt "Import tracking codes settings panel"
+msgid "Import tracking codes"
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:204
+msgctxt "Tab description in plugin import panel"
+msgid "Upload a CSV file to import tracking codes into your orders."
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:227
+msgctxt "[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Wishlist"
+msgid ""
+"Allow your customers to create lists of products they want and share them "
+"with family and friends."
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:239
+msgctxt "[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Gift Cards"
+msgid ""
+"Sell gift cards in your shop to increase your earnings and attract new "
+"customers."
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:251
+msgctxt ""
+"[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Ajax Product "
+"Filter"
+msgid ""
+"Help your customers to easily find the products they are looking for and "
+"improve the user experience of your shop."
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:263
+msgctxt ""
+"[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Product "
+"Add-Ons"
+msgid ""
+"Add paid or free advanced options to your product pages using fields like "
+"radio buttons, checkboxes, drop-downs, custom text inputs, and more."
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:275
+msgctxt ""
+"[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Dynamic "
+"Pricing and Discounts"
+msgid ""
+"Increase conversions through dynamic discounts and price rules, and build "
+"powerful and targeted offers."
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:287
+msgctxt ""
+"[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Customize My "
+"Account"
+msgid ""
+"Customize the My Account page of your customers by creating custom sections "
+"with promotions and ad-hoc content based on your needs."
+msgstr ""
+
+#: includes/class.yith-woocommerce-order-tracking.php:573
+msgctxt "Order tracking metabox title"
+msgid "Order tracking"
 msgstr ""

@@ -1,14 +1,14 @@
 <?php
 /**
  * Plugin Name: YITH WooCommerce Order & Shipment Tracking
- * Plugin URI: http://yithemes.com/themes/plugins/yith-woocommerce-order-tracking/
+ * Plugin URI: https://yithemes.com/themes/plugins/yith-woocommerce-order-tracking/
  * Description: Enter the order shipping and tracking information in your WooCommerce orders. Share the tracking info with your customers and improve your customer experience.
  * Author: YITH
  * Text Domain: yith-woocommerce-order-tracking
- * Version: 2.30.0
+ * Version: 2.31.0
  * Author URI: http://yithemes.com/
- * WC requires at least: 9.1
- * WC tested up to: 9.3
+ * WC requires at least: 9.2
+ * WC tested up to: 9.4
  *
  * @package YITH\OrderTracking
  */
@@ -16,6 +16,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
+
 
 if ( ! function_exists( 'is_plugin_active' ) ) {
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -34,7 +35,7 @@ if ( ! defined( 'YITH_YWOT_SLUG' ) ) {
 }
 
 if ( ! defined( 'YITH_YWOT_VERSION' ) ) {
-	define( 'YITH_YWOT_VERSION', '2.30.0' );
+	define( 'YITH_YWOT_VERSION', '2.31.0' );
 }
 
 if ( ! defined( 'YITH_YWOT_FILE' ) ) {
@@ -132,7 +133,6 @@ if ( ! function_exists( 'yith_ywot_init' ) ) {
 
 		// Load required classes and functions.
 		require_once YITH_YWOT_INCLUDES_PATH . '/class.yith-woocommerce-order-tracking.php';
-		require_once YITH_YWOT_INCLUDES_PATH . '/functions.php';
 
 		global $YWOT_Instance; // phpcs:ignore
 		$YWOT_Instance = new Yith_WooCommerce_Order_Tracking(); // phpcs:ignore
