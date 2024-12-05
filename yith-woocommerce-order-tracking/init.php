@@ -5,10 +5,11 @@
  * Description: Enter the order shipping and tracking information in your WooCommerce orders. Share the tracking info with your customers and improve your customer experience.
  * Author: YITH
  * Text Domain: yith-woocommerce-order-tracking
- * Version: 2.31.0
+ * Version: 2.32.0
  * Author URI: http://yithemes.com/
- * WC requires at least: 9.2
- * WC tested up to: 9.4
+ * WC requires at least: 9.3
+ * WC tested up to: 9.5
+ * Requires Plugins: woocommerce
  *
  * @package YITH\OrderTracking
  */
@@ -35,7 +36,7 @@ if ( ! defined( 'YITH_YWOT_SLUG' ) ) {
 }
 
 if ( ! defined( 'YITH_YWOT_VERSION' ) ) {
-	define( 'YITH_YWOT_VERSION', '2.31.0' );
+	define( 'YITH_YWOT_VERSION', '2.32.0' );
 }
 
 if ( ! defined( 'YITH_YWOT_FILE' ) ) {
@@ -129,7 +130,9 @@ if ( ! function_exists( 'yith_ywot_init' ) ) {
 	 * Load text domain and start plugin
 	 */
 	function yith_ywot_init() {
-		load_plugin_textdomain( 'yith-woocommerce-order-tracking', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		if ( function_exists( 'yith_plugin_fw_load_plugin_textdomain' ) ) {
+			yith_plugin_fw_load_plugin_textdomain( 'yith-woocommerce-order-tracking', dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		}
 
 		// Load required classes and functions.
 		require_once YITH_YWOT_INCLUDES_PATH . '/class.yith-woocommerce-order-tracking.php';
@@ -141,11 +144,10 @@ if ( ! function_exists( 'yith_ywot_init' ) ) {
 	add_action( 'yith_ywot_init', 'yith_ywot_init' );
 }
 
-/* Plugin Framework Version Check */
-if ( ! function_exists( 'yit_maybe_plugin_fw_loader' ) && file_exists( YITH_YWOT_DIR . 'plugin-fw/init.php' ) ) {
-	require_once YITH_YWOT_DIR . 'plugin-fw/init.php';
+// Plugin Framework Loader.
+if ( file_exists( plugin_dir_path( __FILE__ ) . 'plugin-fw/init.php' ) ) {
+	require_once plugin_dir_path( __FILE__ ) . 'plugin-fw/init.php';
 }
-yit_maybe_plugin_fw_loader( YITH_YWOT_DIR );
 
 if ( ! function_exists( 'yith_plugin_registration_hook' ) ) {
 	require_once 'plugin-fw/yit-plugin-registration-hook.php';

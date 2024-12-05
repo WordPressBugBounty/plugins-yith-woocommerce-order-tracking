@@ -106,8 +106,6 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 		 * @access public
 		 */
 		public function __construct() {
-			add_action( 'plugins_loaded', array( $this, 'plugin_fw_loader' ), 15 );
-
 			add_action( 'admin_menu', array( $this, 'register_panel' ), 5 );
 			add_filter( 'plugin_action_links_' . plugin_basename( YITH_YWOT_DIR . '/' . basename( YITH_YWOT_FILE ) ), array( $this, 'action_links' ) );
 			add_filter( 'yith_show_plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 3 );
@@ -135,8 +133,8 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 			/**
 			 * Show icon on order list for picked up orders.
 			 */
-			add_action( 'manage_woocommerce_page_wc-orders_custom_column', array( $this, 'prepare_picked_up_icon' ),10, 2 );
-			add_action( 'manage_shop_order_posts_custom_column', array( $this, 'prepare_picked_up_icon' ), 10, 2);
+			add_action( 'manage_woocommerce_page_wc-orders_custom_column', array( $this, 'prepare_picked_up_icon' ), 10, 2 );
+			add_action( 'manage_shop_order_posts_custom_column', array( $this, 'prepare_picked_up_icon' ), 10, 2 );
 
 			/**
 			 * Save Order Meta Boxes
@@ -160,51 +158,32 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 		}
 
 		/**
-		 * Load Plugin Framework.
-		 */
-		public function plugin_fw_loader() {
-			if ( ! defined( 'YIT_CORE_PLUGIN' ) ) {
-				global $plugin_fw_data;
-				if ( ! empty( $plugin_fw_data ) ) {
-					$plugin_fw_file = array_shift( $plugin_fw_data );
-					require_once $plugin_fw_file;
-				}
-			}
-		}
-
-		/**
 		 * Retrieve the admin panel tabs.
 		 *
 		 * @return array
 		 */
 		protected function get_admin_panel_tabs(): array {
-
 			$admin_tabs = array(
-				'general'  => array(
-					'title' => _x( 'Settings', 'Settings tab name', 'yith-woocommerce-order-tracking' ),
-					'description'  => _x( 'Configure the general settings of the plugin.', 'Tab description in plugin settings panel', 'yith-woocommerce-order-tracking' ),
-					'icon'  => 'settings',
+				'general' => array(
+					'title'       => _x( 'Settings', 'Settings tab name', 'yith-woocommerce-order-tracking' ),
+					'description' => _x( 'Configure the general settings of the plugin.', 'Tab description in plugin settings panel', 'yith-woocommerce-order-tracking' ),
+					'icon'        => 'settings',
 				),
 			);
 
 			if ( defined( 'YITH_YWOT_PREMIUM' ) ) {
-
 				$open_ticket_url = 'https://yithemes.com/my-account/support/submit-a-ticket/';
 
 				$admin_tabs['carriers'] = array(
-						'title'       => _x( 'Carriers', 'Carriers tab name', 'yith-woocommerce-order-tracking' ),
-						'description' => __( 'Select the carriers that will be used for orders shipping.', 'yith-woocommerce-order-tracking' ),
-						'icon'        => '<svg data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <path d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>',
+					'title'       => _x( 'Carriers', 'Carriers tab name', 'yith-woocommerce-order-tracking' ),
+					'description' => __( 'Select the carriers that will be used for orders shipping.', 'yith-woocommerce-order-tracking' ),
+					'icon'        => '<svg data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
 				);
 
 				$admin_tabs['import'] = array(
 					'title'       => _x( 'Import tracking codes', 'Import tracking codes settings panel', 'yith-woocommerce-order-tracking' ),
 					'description' => _x( 'Upload a CSV file to import tracking codes into your orders.', 'Tab description in plugin import panel', 'yith-woocommerce-order-tracking' ),
-					'icon'        => '<svg data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <path d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15M9 12l3 3m0 0 3-3m-3 3V2.25" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>',
+					'icon'        => '<svg data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15M9 12l3 3m0 0 3-3m-3 3V2.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
 				);
 
 			}
@@ -227,7 +206,7 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 						'description'    => _x(
 							'Allow your customers to create lists of products they want and share them with family and friends.',
 							'[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Wishlist',
-							'yith-woocommerce-gift-cards'
+							'yith-woocommerce-order-tracking'
 						),
 						'is_active'      => defined( 'YITH_WCWL_PREMIUM' ),
 						'is_recommended' => true,
@@ -239,7 +218,7 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 						'description'    => _x(
 							'Sell gift cards in your shop to increase your earnings and attract new customers.',
 							'[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Gift Cards',
-							'yith-woocommerce-pdf-invoice'
+							'yith-woocommerce-order-tracking'
 						),
 						'is_active'      => defined( 'YITH_YWGC_PREMIUM' ),
 						'is_recommended' => true,
@@ -251,7 +230,7 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 						'description'    => _x(
 							'Help your customers to easily find the products they are looking for and improve the user experience of your shop.',
 							'[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Ajax Product Filter',
-							'yith-woocommerce-gift-cards'
+							'yith-woocommerce-order-tracking'
 						),
 						'is_active'      => defined( 'YITH_WCAN_PREMIUM' ),
 						'is_recommended' => false,
@@ -263,7 +242,7 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 						'description'    => _x(
 							'Add paid or free advanced options to your product pages using fields like radio buttons, checkboxes, drop-downs, custom text inputs, and more.',
 							'[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Product Add-Ons',
-							'yith-woocommerce-gift-cards'
+							'yith-woocommerce-order-tracking'
 						),
 						'is_active'      => defined( 'YITH_WAPO_PREMIUM' ),
 						'is_recommended' => false,
@@ -275,7 +254,7 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 						'description'    => _x(
 							'Increase conversions through dynamic discounts and price rules, and build powerful and targeted offers.',
 							'[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Dynamic Pricing and Discounts',
-							'yith-woocommerce-gift-cards'
+							'yith-woocommerce-order-tracking'
 						),
 						'is_active'      => defined( 'YITH_YWDPD_PREMIUM' ),
 						'is_recommended' => false,
@@ -284,7 +263,11 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 						'name'           => 'Customize My Account Page',
 						'icon_url'       => YITH_YWOT_URL . 'assets/images/plugins/customize-myaccount-page.svg',
 						'url'            => '//yithemes.com/themes/plugins/yith-woocommerce-customize-my-account-page/',
-						'description'    => _x( 'Customize the My Account page of your customers by creating custom sections with promotions and ad-hoc content based on your needs.', '[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Customize My Account', 'yith-woocommerce-gift-cards' ),
+						'description'    => _x(
+							'Customize the My Account page of your customers by creating custom sections with promotions and ad-hoc content based on your needs.',
+							'[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Customize My Account',
+							'yith-woocommerce-order-tracking'
+						),
 						'is_active'      => defined( 'YITH_WCMAP_PREMIUM' ),
 						'is_recommended' => false,
 					),
@@ -292,14 +275,20 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 						'name'        => 'Points and Rewards',
 						'icon_url'    => YITH_YWOT_URL . 'assets/images/plugins/points.svg',
 						'url'         => '//yithemes.com/themes/plugins/yith-woocommerce-points-and-rewards/',
-						'description' => __( 'Loyalize your customers with an effective points-based loyalty program and instant rewards.', 'yith-woocommerce-subscription' ),
+						'description' => __(
+							'Loyalize your customers with an effective points-based loyalty program and instant rewards.',
+							'yith-woocommerce-order-tracking'
+						),
 						'is_active'   => defined( 'YITH_YWPAR_PREMIUM' ),
 					),
 					'ajax-search'          => array(
 						'name'           => 'Ajax Search',
 						'icon_url'       => YITH_YWOT_URL . 'assets/images/plugins/ajax-search.svg',
 						'url'            => '//yithemes.com/themes/plugins/yith-woocommerce-ajax-search/',
-						'description'    => __( 'Add an instant search form to your e-commerce shop and help your customers quickly find the products they want to buy.', 'yith-multi-currency-switcher-for-woocommerce' ),
+						'description'    => __(
+							'Add an instant search form to your e-commerce shop and help your customers quickly find the products they want to buy.',
+							'yith-woocommerce-order-tracking'
+						),
 						'is_active'      => defined( 'YITH_WCAS_PREMIUM' ),
 						'is_recommended' => false,
 					),
@@ -324,20 +313,26 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 						'description' => __( 'Allows your customers to easily track the shipping of orders placed in e-commerce. ', 'yith-woocommerce-order-tracking' ),
 						'show'        => get_option( 'yith-ywot-welcome-modal', 'welcome' ) === 'welcome',
 						'items'       => array(
-							'documentation'  => array(
+							'documentation' => array(
 								'url' => $this->official_documentation,
 							),
-							'how-to-video'   => array(
+							'how-to-video'  => array(
 								'url' => array(
 									'en' => 'https://www.youtube.com/watch?v=fVHiDMlkYlA',
 									'it' => 'https://www.youtube.com/watch?v=iBSBFNVygRQ',
 									'es' => 'https://www.youtube.com/watch?v=X-fOKp5aQRo',
 								),
 							),
-							'feature'        => array(
+							'feature'       => array(
 								'title'       => __( '<mark>Enable the carriers</mark>     you want to use for the shipment of your orders', 'yith-woocommerce-order-tracking' ),
 								'description' => __( 'and embark on this new adventure!', 'yith-woocommerce-order-tracking' ),
-								'url'         => add_query_arg( array( 'page' => 'yith_woocommerce_order_tracking_panel', 'tab' => 'carriers'  ), admin_url( 'admin.php' ) ),
+								'url'         => add_query_arg(
+									array(
+										'page' => 'yith_woocommerce_order_tracking_panel',
+										'tab'  => 'carriers',
+									),
+									admin_url( 'admin.php' )
+								),
 							),
 						),
 					),
@@ -512,7 +507,6 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 			}
 
 			if ( $can_be_enqueue ) {
-
 				wp_enqueue_style( 'tooltipster' );
 				wp_enqueue_style( 'tooltipster-borderless' );
 				wp_enqueue_style( 'ywot_style' );
@@ -552,7 +546,6 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 		 * @since  1.0.0
 		 */
 		public function add_order_tracking_metabox( $post_type, $post ) {
-
 			/**
 			 * APPLY_FILTERS: yith_woocommerce_order_tracking_for_vendor_enabled
 			 *
@@ -566,16 +559,19 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 				return;
 			}
 
-			if ( in_array( $post_type, array( wc_get_page_screen_id( 'shop-order' ), 'shop_order' ), true ) ){
-
+			if ( in_array( $post_type, array( wc_get_page_screen_id( 'shop-order' ), 'shop_order' ), true ) ) {
 				add_meta_box(
 					'yith-order-tracking-information',
-					_x( 'Order tracking', 'Order tracking metabox title', 'yith-woocommerce-order-tracking' ), array( $this, 'show_order_tracking_metabox' ),
+					_x( 'Order tracking', 'Order tracking metabox title', 'yith-woocommerce-order-tracking' ),
+					array(
+						$this,
+						'show_order_tracking_metabox',
+					),
 					$post_type,
 					'side',
-					'high' );
+					'high'
+				);
 			}
-
 		}
 
 		/**
@@ -588,7 +584,6 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 		 * @return void
 		 */
 		public function show_order_tracking_metabox( $post ) {
-
 			if ( ! apply_filters( 'yith_woocommerce_order_tracking_for_vendor_enabled', true, $post ) ) {
 				return;
 			}
@@ -599,12 +594,11 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 				return;
 			}
 
-			$order_tracking_code = $order->get_meta('ywot_tracking_code');
-			$order_carrier_name  = $order->get_meta('ywot_carrier_name');
-			$order_pick_up_date  = $order->get_meta('ywot_pick_up_date');
-			$order_carrier_url   = $order->get_meta('ywot_carrier_url');
-			$order_picked_up     = $order->get_meta('ywot_picked_up');
-
+			$order_tracking_code = $order->get_meta( 'ywot_tracking_code' );
+			$order_carrier_name  = $order->get_meta( 'ywot_carrier_name' );
+			$order_pick_up_date  = $order->get_meta( 'ywot_pick_up_date' );
+			$order_carrier_url   = $order->get_meta( 'ywot_carrier_url' );
+			$order_picked_up     = $order->get_meta( 'ywot_picked_up' );
 
 			$picked_up_field = array(
 				'id'    => 'ywot_picked_up',
@@ -681,7 +675,7 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 		/**
 		 * Check if an order is flagged as picked up
 		 *
-		 * @param object $order
+		 * @param WC_Order $order Order object.
 		 *
 		 * @since  1.0
 		 *
@@ -694,8 +688,8 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 		/**
 		 * Build a text which indicates order tracking information
 		 *
-		 * @param object  $order
-		 * @param string $pattern  text pattern to be used.
+		 * @param WC_Order $order   Order object.
+		 * @param string   $pattern Text pattern to be used.
 		 *
 		 * @since  1.0
 		 */
@@ -707,10 +701,10 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 			$pattern = is_admin() ? __( 'Picked up by <b>[carrier_name]</b> on <b>[pickup_date]</b>. Tracking code: <b>[track_code]</b>. Live tracking on [carrier_link]', 'yith-woocommerce-order-tracking' ) : $pattern;
 
 			// Retrieve additional information to be shown.
-			$order_tracking_code = $order->get_meta('ywot_tracking_code');
-			$order_carrier_name  = $order->get_meta('ywot_carrier_name');
-			$order_pick_up_date  = $order->get_meta('ywot_pick_up_date');
-			$order_carrier_link  = $order->get_meta('ywot_carrier_url');
+			$order_tracking_code = $order->get_meta( 'ywot_tracking_code' );
+			$order_carrier_name  = $order->get_meta( 'ywot_carrier_name' );
+			$order_pick_up_date  = $order->get_meta( 'ywot_pick_up_date' );
+			$order_carrier_link  = $order->get_meta( 'ywot_carrier_url' );
 			$carrier_link        = ! empty( $order_carrier_link ) ? '<a href="' . esc_url( $order_carrier_link ) . '" target="_blank">' . wp_kses_post( $order_carrier_name ) . '</a>' : '<span>' . wp_kses_post( $order_carrier_name ) . '</span>';
 
 			$message = str_replace(
@@ -730,8 +724,8 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 		/**
 		 * Show a image stating the order has been picked up
 		 *
-		 * @param object $order
-		 * @param string $css_class CSS classes.
+		 * @param WC_Order $order     Order object.
+		 * @param string   $css_class CSS classes.
 		 *
 		 * @since  1.0
 		 */
@@ -740,8 +734,8 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 				return;
 			}
 
-			$message     = $this->get_picked_up_message( $order );
-			$track_url   = $order->get_meta('ywot_carrier_url');
+			$message   = $this->get_picked_up_message( $order );
+			$track_url = $order->get_meta( 'ywot_carrier_url' );
 
 			$href = ! empty( $track_url ) ? 'href="' . $track_url . '" target="_blank"' : '';
 
@@ -761,15 +755,14 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 		/**
 		 * Show a picked up icon on backend orders table
 		 *
-		 * @param column $column the column of backend order table being elaborated.
-		 * @param post_id mixed the order ID or the order object.
+		 * @param string $column The column of backend order table being elaborated.
+		 * @param int    $post_id   The order ID or the order object.
 		 *
 		 * @since  1.0
 		 * @access public
 		 * @return void
 		 */
 		public function prepare_picked_up_icon( $column, $post_id ) {
-
 			// If column is not of type order_status, skip it.
 			if ( 'order_status' !== $column ) {
 				return;
@@ -796,7 +789,7 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 		 */
 		public function save_order_tracking_metabox( $post_id ) {
 			$order = wc_get_order( $post_id );
-			
+
 			if ( $order ) {
 				//phpcs:disable WordPress.Security.NonceVerification
 				$picked_up     = isset( $_POST['ywot_picked_up'] );
@@ -852,7 +845,6 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 		 * @return void
 		 */
 		public function add_order_shipping_details( $order ) {
-
 			if ( ! $this->is_order_picked_up( $order ) ) {
 				return;
 			}
@@ -900,12 +892,12 @@ if ( ! class_exists( 'YITH_WooCommerce_Order_Tracking' ) ) {
 			return $actions;
 		}
 
-		/** 
-		 *  Declare support for WooCommerce features. 
-		 */ 
+		/**
+		 *  Declare support for WooCommerce features.
+		 */
 		public function declare_wc_features_support() {
-			if (class_exists('\Automattic\WooCommerce\Utilities\FeaturesUtil')) {
-				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', YITH_YWOT_FREE_INIT, true);
+			if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', YITH_YWOT_FREE_INIT, true );
 			}
 		}
 	}

@@ -4,7 +4,7 @@ Contributors: yithemes
 Tags: carrier, tracking, delivery, shipping, woocommerce, yith
 Requires at least: 6.5
 Tested up to: 6.7
-Stable tag: 2.31.0
+Stable tag: 2.32.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -68,6 +68,11 @@ YITH WooCommerce Order & Shipment Tracking will add a new tab called "Order & Sh
 5. Customer view in order details: the customers can view the shipping info in the order details page, in the My Account section.
 
 == Changelog ==
+
+= 2.32.0 - Released on 5 December 2024 =
+
+* New: support for WooCommerce 9.5
+* Update: YITH plugin framework
 
 = 2.31.0 - Released on 07 November 2024 =
 
@@ -555,17 +560,3 @@ If you want to see a demonstration version of the premium version of YITH WooCom
 
 = How can I report security bugs? =
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/yith-woocommerce-order-tracking)
-
-== Suggestions ==
-
-If you have suggestions about how to improve YITH WooCommerce Order & Shipment Tracking, you can [write us](mailto:plugins@yithemes.com "Your Inspiration Themes") so we can bundle them into YITH WooCommerce Order & Shipment Tracking.
-
-== Translators ==
-
-= Available Languages =
-* English
-* Italian
-* Spanish
-
-If you have created your own language pack, or have an update for an existing one, you can send [gettext PO and MO file](http://codex.wordpress.org/Translating_WordPress "Translating WordPress")
-[use](http://yithemes.com/contact/ "Your Inspiration Themes") so we can bundle it into YITH WooCommerce Order & Shipment Tracking languages.
