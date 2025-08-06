@@ -4,7 +4,7 @@ Contributors: yithemes
 Tags: carrier, tracking, delivery, shipping, woocommerce, yith
 Requires at least: 6.6
 Tested up to: 6.8
-Stable tag: 2.38.0
+Stable tag: 2.39.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -69,7 +69,11 @@ YITH WooCommerce Order & Shipment Tracking will add a new tab called "Order & Sh
 
 == Changelog ==
 
-= 2.37.0 - Released on 1 July 2025 =
+= 2.39.0 - Released on 6 August 2025 =
+
+* New: support for WooCommerce 10.1
+
+= 2.38.0 - Released on 1 July 2025 =
 
 * New: support for WooCommerce 10.0
 
